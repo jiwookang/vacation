@@ -20,4 +20,9 @@ from first import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('blog/<int:blog_id>', views.detail, name="detail"),
+    path('blog/write', views.write, name="write"),#글쓰기 페이지를 띄워주는 함수 실행 path
+    path('blog/create', views.create, name="create"),#작성한 글을 DB에 저장하는 함수를 실행하는 path
+    path('blog/<int:blog_id>/update', views.update, name="update"),
+    path('blog/<int:blog_id>/delete', views.delete, name="delete"),
 ]
