@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'portfolio.apps.PortfolioConfig',
     'first.apps.FirstConfig',
     'django.contrib.admin',
@@ -45,7 +46,7 @@ ROOT_URLCONF = 'vacationproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['vacationproject/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,3 +117,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #static 파일들이 어디로 모일 것인지를 쓰는 곳
+
+#settings.py에 media 설정하기
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

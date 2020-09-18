@@ -134,27 +134,17 @@
 </head>
 <body>
     <div class="container">
-      <!--페이지 제목-->
-      <h1>포트폴리오 페이지</h1>
-
       <!--상단 navbar-->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
-          </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+              <li><a href="{% url 'home' %}">HOME</a></li>
               <li><a href="{% url 'write' %}">WRITE</a></li>
               <li><a href="{% url 'portfolio' %}">PORTFOLIO</a></li>
+              <li><a href="{% url 'signup' %}">SIGNUP</a></li>
+              <li><a href="{% url 'login' %}">LOGIN</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
               <div class="form-group">
@@ -167,34 +157,49 @@
       </nav>
       
       <!--본문-->
+      <!--static를 이용한 포트폴리오-->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h4>포트폴리오 페이지</h4>
+              <p class="card-text">겨울</p>
+            </div>
+            <img src="{% static '눈.png' %}" width=1000px height=500px alt="눈" />
+          </div>
+        </div>
+      </div>
+
+      <!--media를 이용한 포트폴리오-->
       <!--페이지-->
       <main role="main" class="inner cover">
         <section  id = "main-section">
+        {% for portfolio in portfolio.all %}
           <div class = "paper">
             <div class = "paper-holder">
-              <img src="{% static '울라프.jpg' %}" width=300px height=300px alt="울라프" />
+              <img src="{{portfolio.image.url}}" width=300px height=300px alt="이미지" />
             </div>
-            <!--<p class = "paper-description">첫번째 그림</p>-->
             <div class = "paper-content">
-              <a class = "paper-text">귀여운 울라프에요!</a>
+              <h4>{{portfolio.title}}</h4>
+              <p class="card-text">{{portfolio.description}}</p>
             </div>
 		      </div>
+        {% endfor %}
         </section>  
       </main>
-      
       <!--라이트박스-->
       <div id = "darken-background">
-        <div id = "lightbox">
-          <div class = "user-information">  
-            <div class = "user-information-text">
-              <h3>울라프</h3>
-              <p>안녕하세요~ 저는 울라프에요! 저는 어른이 되고싶어요~!~!</p>
-            </div>
+      {% for portfolio in portfolio.all %}   
+        <div id = "lightbox">  
+          <div class = "user-information-text">
+            <h4>{{portfolio.title}}</h4>
+            <p class="card-text">{{portfolio.description}}</p>
           </div>
           <hr class = "lightbox-splitter"/>
-          <img class = "bigImg" src="{% static '울라프.jpg' %}"/>
+          <img class = "bigImg" src="{{portfolio.image.url}}"/>  
         </div>
-    </div>
-
+      {% endfor %}  
+      </div>
+    
 </body>
 </html>

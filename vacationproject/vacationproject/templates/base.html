@@ -1,0 +1,38 @@
+<!--공통적인 코드 붙이기-->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+      <!--상단 navbar-->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'home' %}">HOME</a></li>
+              <li><a href="{% url 'write' %}">WRITE</a></li>
+              <li><a href="{% url 'portfolio' %}">PORTFOLIO</a></li>
+              <li><a href="{% url 'signup' %}" aria-disabled="true">SIGNUP</a></li>
+              <li><a href="{% url 'login' %}" aria-disabled="true">LOGIN</a></li>
+              <li><a href="{% url 'logout' %}" aria-disabled="true">LOGOUT</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+      <!--이 아래에 컨텐츠가 올 예정이라고 선언을 해줘야 함.-->
+      <!--template 각자 마다 해당하는 내용들이 담김. 다 다른 내용-->
+      {% block contents %}
+      {% endblock %}
+    </div>
+</body>
+</html>
